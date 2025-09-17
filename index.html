@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สินค้า - THEGADOR</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="https://img.icons8.com/?size=100&id=8uAtuJQJ4jhd&format=png&color=000000" type="image/png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="container main-page" id="main-list">
+        <div class="marquee-container">
+        <p class="marquee-text">แจกโปรแกรมฟรี ดาวน์โหลดได้เลย</p>
+    </div>
+    <div class="header-main">
+        <div class="logo">THEGADOR</div>
+        <div class="user-profile">
+            <span id="welcome-message"></span>
+            <button id="logout-button" class="btn btn-logout">ออกจากระบบ</button>
+        </div>
+    </div>
+    
+    <div class="search-container">
+        <input type="text" id="search-input" placeholder="ค้นหาโปรแกรม...">
+    </div>
+
+    <h2 class="section-header">แจกฟรี</h2>
+    <div class="product-grid" id="free-grid"></div>
+
+    <h2 class="section-header">โปรแกรม</h2>
+    <div class="product-grid" id="vip-grid"></div>
+
+    <h2 class="section-header">คอร์สเรียน</h2>
+    <div class="product-grid" id="cost-grid"></div>
+
+</div>
+
+<div class="container detail-view" id="detail-page" style="display: none;">
+    <button id="back-button" class="btn btn-back">← กลับ</button>
+    <div class="detail-content">
+        <div class="detail-image-container">
+            <img id="detail-image" src="" alt="Product Image">
+        </div>
+        <div class="detail-info">
+            <h2 id="detail-title"></h2>
+            <h3 id="detail-price"></h3>
+            <p id="detail-description"></p>
+            <a href="#" id="download-link" class="btn btn-download" style="display: none;" download>
+                ดาวน์โหลด
+            </a>
+            <div id="password-form-container" style="display: none;">
+                <p>โปรดใส่รหัสผ่านเพื่อดาวน์โหลด</p>
+                <input type="password" id="password-input" placeholder="รหัสผ่าน">
+                <button id="password-submit-button" class="btn btn-submit">ยืนยัน</button>
+                <p id="password-message"></p>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/data.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
