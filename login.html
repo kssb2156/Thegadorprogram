@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>เข้าสู่ระบบ - THEGADOR</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="https://img.icons8.com/?size=100&id=Kfc3ZoKGB949&format=png&color=000000" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/login.css" />
+</head>
+<body>
+
+    <div class="animated-shape shape-1"></div>
+    <div class="animated-shape shape-2"></div>
+
+    <div class="login-container">
+        <h2 class="title">THEGADOR</h2>
+        <h3 class="subtitle">เข้าสู่ระบบเพื่อใช้งานโปรแกรม</h3>
+        <form id="login-form">
+            <div class="form-group">
+                <label for="username-input" class="label">ชื่อผู้ใช้</label>
+                <input type="text" id="username-input" name="username" required autocomplete="username" class="input-field" />
+            </div>
+            <div class="form-group">
+                <label for="login-password-input" class="label">รหัสผ่าน</label>
+                <div class="password-input-wrapper">
+                    <input type="password" id="login-password-input" name="password" required autocomplete="current-password" class="input-field" />
+                    <span id="password-toggle" class="password-toggle-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye">
+                            <path d="M2.08 1.05a20.24 20.24 0 0 0-1.4 1.83C.82 3.82 1 7.23 2.15 9.17c1.16 1.94 3.03 3.65 5.5 5.48a6.95 6.95 0 0 0 1.96.86" />
+                            <path d="M12 4s3 5.5 7 9c.7 1.25 2.1 3.5 3 5" />
+                            <path d="M16 14s2-2 4-3.5" />
+                            <path d="m14 14.5-1.5-1.5" />
+                            <path d="M10 20.5 8 18.5" />
+                            <path d="M10 16s2-2.5 4-4" />
+                            <path d="M6 10s2-2 4-3.5" />
+                            <circle cx="12" cy="12" r="3" />
+                            <line x1="2" x2="22" y1="2" y2="22" />
+                        </svg>
+                    </span>
+                </div>
+            </div>
+            <div class="options-group">
+                <div class="remember-me-group">
+                    <input type="checkbox" id="remember-me" class="checkbox-input">
+                    <label for="remember-me" class="checkbox-label">จดจำฉันไว้</label>
+                </div>
+                <div class="auto-login-group">
+                    <input type="checkbox" id="auto-login" class="checkbox-input">
+                    <label for="auto-login" class="checkbox-label">เข้าสู่ระบบอัตโนมัติ</label>
+                </div>
+            </div>
+            <p id="login-message" class="message"></p>
+            <button type="submit" id="login-button" class="btn-login">เข้าสู่ระบบ</button>
+        </form>
+    </div>
+
+    <script src="js/login.js"></script>
+</body>
+</html>

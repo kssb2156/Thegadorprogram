@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>THEGADOR</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="https://img.icons8.com/?size=100&id=Kfc3ZoKGB949&format=png&color=000000" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card: #0b1220;
+            --accent-1: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
+            --glass: rgba(255, 255, 255, 0.04);
+            --muted: #9aa4bf;
+            --text-color: #e6eef8;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Kanit', sans-serif;
+            background: var(--bg);
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            position: relative;
+        }
+        .animated-shape {
+            position: absolute;
+            opacity: 0.08;
+            filter: blur(80px);
+            z-index: -1;
+            border-radius: 50%;
+        }
+        .shape-1 {
+            width: 500px;
+            height: 500px;
+            background-color: #3b82f6;
+            top: 10%;
+            left: 5%;
+            animation: move-shape-1 20s infinite alternate ease-in-out;
+        }
+        .shape-2 {
+            width: 400px;
+            height: 400px;
+            background-color: #06b6d4;
+            bottom: 15%;
+            right: 10%;
+            animation: move-shape-2 25s infinite alternate ease-in-out;
+        }
+        @keyframes move-shape-1 {
+            from { transform: translate(0, 0) rotate(0deg); }
+            to { transform: translate(50px, 80px) rotate(30deg); }
+        }
+        @keyframes move-shape-2 {
+            from { transform: translate(0, 0) rotate(0deg); }
+            to { transform: translate(-80px, -50px) rotate(-20deg); }
+        }
+        .fade-in {
+            animation: fade-in-up 1s ease-out forwards;
+        }
+        @keyframes fade-in-up {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 32px;
+            z-index: 10;
+        }
+        .page-header .logo {
+            font-size: 1.25em;
+            font-weight: 700;
+            color: var(--text-color);
+            text-decoration: none;
+        }
+        .page-header .btn {
+            padding: 8px 16px;
+            font-weight: 600;
+            transition: all 0.2s ease-in-out;
+        }
+        .page-header .btn:hover {
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+        }
+    .main-content {
+        flex: 1; 
+        display: grid;
+        place-items: center; /* คำสั่งเดียวจัดกึ่งกลางทั้งแนวตั้งและแนวนอน */
+        padding: 32px;
+    }
+        .container {
+            width: 100%;
+            max-width: 1100px;
+        }
+        .card {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+            border-radius: 16px;
+            padding: 36px;
+            box-shadow: 0 8px 30px rgba(2, 6, 23, 0.6);
+            display: flex;
+            gap: 28px;
+            align-items: center;
+        }
+        .hero { flex: 1 }
+        h1 { font-size: 28px; margin: 14px 0 8px }
+        p.lead { color: var(--muted); margin: 0 0 20px; line-height: 1.6 }
+        .btn-row { display: flex; gap: 12px; align-items: center }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 18px;
+            border-radius: 12px;
+            background: var(--accent-1);
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 6px 18px rgba(59, 130, 246, 0.18);
+            transition: transform .12s ease, box-shadow .12s ease;
+        }
+        .btn:hover { box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4); }
+        .btn.ghost {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            color: #dbeafe;
+            box-shadow: none;
+        }
+        .btn.ghost:hover { box-shadow: 0 0 10px rgba(255, 255, 255, 0.1); }
+        .btn:active { transform: translateY(1px); }
+        .features {
+            width: 360px;
+            padding: 18px;
+            border-radius: 12px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.005));
+        }
+        .feature { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 12px }
+        .icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.03);
+            display: grid;
+            place-items: center;
+            font-weight: 700;
+        }
+        small { display: block; color: var(--muted) }
+        .badge {
+            display: inline-block;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.03);
+            font-weight: 600;
+            color: #cfe8ff;
+            margin-left: 8px;
+        }
+        
+        /* New Section: Additional Content */
+      .extra-content {
+          /* เพิ่มคำสั่งด้านล่างนี้ */
+          display: flex; /* ทำให้เนื้อหาในส่วนนี้เป็น Flexbox */
+          flex-direction: column; /* จัดเรียงเนื้อหาจากบนลงล่าง */
+          align-items: center; /* จัดให้อยู่กึ่งกลางในแนวนอน */
+          
+          padding: 60px 32px;
+          text-align: center;
+      }
+        .extra-content h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        .program-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+            animation: cards-in 1.5s ease-out forwards;
+            opacity: 0;
+            animation-delay: 0.5s;
+        }
+        @keyframes cards-in {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .program-card {
+            background: var(--card);
+            border-radius: 12px;
+            padding: 25px;
+            text-align: left;
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+        .program-card:hover {
+            border-color: rgba(6, 182, 212, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+        .program-card h3 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+        .program-card p {
+            font-size: 0.9em;
+            color: var(--muted);
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        .program-card .btn {
+            display: block;
+            text-align: center;
+            padding: 10px;
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            overflow: auto;
+            animation: modal-fade-in 0.3s ease-out;
+        }
+        .modal-content {
+            background-color: var(--card);
+            margin: 15% auto;
+            padding: 30px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 600px;
+            position: relative;
+            animation: modal-pop-in 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+        @keyframes modal-fade-in {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes modal-pop-in {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        .close-btn {
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+        .close-btn:hover { color: var(--accent-1); }
+        .modal-content h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+        .modal-content p {
+            line-height: 1.6;
+            color: var(--muted);
+        }
+        
+        /* Scroll-to-Top Button */
+        #scrollToTopBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 99;
+            border: none;
+            outline: none;
+            background-color: rgba(59, 130, 246, 0.8);
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 50%;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+        #scrollToTopBtn:hover {
+            background-color: #3b82f6;
+        }
+        
+        /* Footer Styles */
+        .footer {
+            padding: 40px 32px;
+            text-align: center;
+            color: var(--muted);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: auto;
+        }
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: left;
+        }
+        .footer-section {
+            flex-basis: 200px;
+        }
+        .footer-section h4 {
+            color: var(--text-color);
+            margin-bottom: 15px;
+            position: relative;
+        }
+        .footer-section h4::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 2px;
+            background: var(--accent-1);
+            margin-top: 5px;
+        }
+        .footer-section a {
+            color: var(--muted);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 8px;
+            transition: color 0.2s ease;
+        }
+        .footer-section a:hover {
+            color: #fff;
+        }
+        .social-links a {
+            margin-right: 15px;
+            display: inline-block;
+            font-size: 24px;
+        }
+        .footer-bottom {
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        /* Responsive */
+        @media (max-width: 900px) {
+            .page-header { padding: 15px; }
+            .card { flex-direction: column; align-items: stretch }
+            .features { width: 100% }
+            .footer-content { flex-direction: column; text-align: center; }
+            .footer-section { margin-bottom: 20px; }
+            .footer-section h4::after {
+                margin: 5px auto 0;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="animated-shape shape-1"></div>
+    <div class="animated-shape shape-2"></div>
+    
+    <header class="page-header fade-in">
+        <a href="#" class="logo">THEGADOR</a>
+        <a class="btn" href="login.html" aria-label="ไปหน้า Login">เข้าสู่ระบบ</a>
+    </header>
+
+    <main class="main-content fade-in">
+        <div class="container">
+            <div class="card">
+                <div class="hero">
+                    <div style="display:flex;align-items:center;gap:12px">
+                        <div class="logo">NEW</div>
+                        <div style="margin-left:auto"><span class="badge">Stable v1.0</span></div>
+                    </div>
+                    <h1>โปรแกรมออกเอกสาร 50ทวิ</h1>
+                    <p class="lead">โปรแกรมนี้ช่วยให้คุณสามารถสร้างและจัดการเอกสาร 50 ทวิได้อย่างง่ายดาย ด้วยอินเทอร์เฟซที่ใช้งานง่ายและฟังก์ชันการพิมพ์อัตโนมัติ คุณจึงสามารถประหยัดเวลาและลดข้อผิดพลาดในการทำงานได้ </p>
+                    <div class="btn-row">
+                        <button class="btn" onclick="openModal('50_twis')">รายละเอียดเพิ่มเติม</button>
+                        <button class="btn ghost" onclick="downloadDemo()">ดาวน์โหลดตัวอย่าง</button>
+                    </div>
+                    <div style="margin-top:18px;color:var(--muted)">
+                        <small>โปรแกรมแจกฟรีพร้อมใช้งาน</small>
+                    </div>
+                </div>
+                <aside class="features">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+                        <strong>ข้อดี</strong>
+                        <small class="badge">V.1</small>
+                    </div>
+                    <div class="feature">
+                        <div class="icon">🎯</div>
+                        <div>
+                            <div style="font-weight:600">ระบบ</div>
+                            <small>ทำงานได้รวดเร็ว (Direct Input)</small>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <div class="icon">⚡</div>
+                        <div>
+                            <div style="font-weight:600">ประสิทธิภาพสูง</div>
+                            <small>ทำงานได้ครอบคลุม</small>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <div class="icon">🔒</div>
+                        <div>
+                            <div style="font-weight:600">ปลอดภัย</div>
+                            <small>ไม่ต้องแก้ไขให้ยุ่งยาก, แปลงไฟล์ PDF อย่างแม่นยำ</small>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+    
+    <section class="extra-content">
+        <h2>Program</h2>
+        <div class="container program-cards">
+            <div class="program-card">
+                <h3>โปรแกรม 50 ทวิ</h3>
+                <p>สร้างเอกสาร 50 ทวิ ได้อย่างรวดเร็วและถูกต้องตามหลักเกณฑ์ ลดขั้นตอนที่ยุ่งยากในการเตรียมเอกสาร</p>
+                <button class="btn" onclick="openModal('50_twis')">ดูรายละเอียด</button>
+            </div>
+            <div class="program-card">
+                <h3>บอท FIFA ตีบวก</h3>
+                <p>บอทอัตโนมัติสำหรับการตีบวกในเกม FIFA Online ที่สามารถทำงานได้อย่างแม่นยำและไม่ดึงเมาส์หลักของคุณ</p>
+                <button class="btn" onclick="openModal('fifa_bot')">ดูรายละเอียด</button>
+            </div>
+            <div class="program-card">
+                <h3>บอทคลิก CMD & ADB</h3>
+                <p>เครื่องมือสำหรับจัดการคำสั่ง CMD และ ADB ที่ช่วยให้คุณควบคุมอุปกรณ์ได้ง่ายขึ้นผ่านการคลิกเพียงครั้งเดียว</p>
+                <button class="btn" onclick="openModal('cmd_adb')">ดูรายละเอียด</button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer fade-in">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>เกี่ยวกับเรา</h4>
+                <p>เราคือผู้พัฒนาโปรแกรมเพื่อช่วยให้ชีวิตของคุณง่ายขึ้น ทั้งโปรแกรมสำหรับธุรกิจและเครื่องมืออัตโนมัติ</p>
+            </div>
+            <div class="footer-section">
+                <h4>ติดต่อ</h4>
+                <a href="#">อีเมล: support@thegador.com</a>
+                <a href="#">โทรศัพท์: +66 81 234 5678</a>
+            </div>
+            <div class="footer-section">
+                <h4>ติดตามเรา</h4>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook">📘</a>
+                    <a href="#" aria-label="Twitter">🐦</a>
+                    <a href="#" aria-label="YouTube">▶️</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 THEGADOR. All Rights Reserved.</p>
+        </div>
+    </footer>
+    
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h3 id="modalTitle"></h3>
+            <p id="modalDescription"></p>
+        </div>
+    </div>
+    
+    <button onclick="scrollToTop()" id="scrollToTopBtn" title="Go to top">▲</button>
+    
+    <script>
+        // Data for modal content
+        const programData = {
+            '50_twis': {
+                title: 'โปรแกรม 50 ทวิ',
+                description: 'โปรแกรมนี้ช่วยให้คุณสามารถสร้างและจัดการเอกสาร 50 ทวิได้อย่างง่ายดาย ด้วยอินเทอร์เฟซที่ใช้งานง่ายและฟังก์ชันการพิมพ์อัตโนมัติ คุณจึงสามารถประหยัดเวลาและลดข้อผิดพลาดในการทำงานได้'
+            },
+            'fifa_bot': {
+                title: 'บอท FIFA ตีบวก',
+                description: 'บอทตัวนี้ถูกออกแบบมาเป็นพิเศษสำหรับเกม FIFA Online ด้วยเทคโนโลยีการส่งคำสั่งตรงเข้าสู่หน้าต่างเกม ทำให้สามารถทำงานได้อย่างแม่นยำโดยไม่รบกวนการใช้งานเมาส์ปกติของคุณ ปลอดภัยและไม่ผิดกฎของเกม'
+            },
+            'cmd_adb': {
+                title: 'บอทคลิก CMD & ADB',
+                description: 'เครื่องมือสำหรับผู้เชี่ยวชาญด้าน IT และนักพัฒนา ที่ต้องการทำงานกับคำสั่ง Command Prompt หรือ ADB (Android Debug Bridge) โปรแกรมนี้ช่วยให้คุณสร้างสคริปต์การคลิกอัตโนมัติเพื่อลดงานที่ทำซ้ำๆ'
+            }
+        };
+
+        // Get the modal elements
+        const modal = document.getElementById('myModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDescription = document.getElementById('modalDescription');
+        const closeBtn = document.getElementsByClassName('close-btn')[0];
+        const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+
+        // Function to open the modal
+        function openModal(programId) {
+            const data = programData[programId];
+            if (data) {
+                modalTitle.textContent = data.title;
+                modalDescription.textContent = data.description;
+                modal.style.display = 'block';
+            }
+        }
+
+        // Function to close the modal
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        closeBtn.onclick = function() {
+            closeModal();
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+
+        function downloadDemo() {
+            alert('ฮ่า ฮ่า โดนหลอก ต้องเข้าหน้าระบบสินค้าก่อนเท่านั้น');
+        }
+        
+        // Show/hide the scroll-to-top button based on scroll position
+        window.onscroll = function() {
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                scrollToTopBtn.style.display = "block";
+            } else {
+                scrollToTopBtn.style.display = "none";
+            }
+        };
+
+        // Scroll to the top of the document
+        function scrollToTop() {
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        }
+    </script>
+</body>
+</html>
